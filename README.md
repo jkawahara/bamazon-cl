@@ -3,26 +3,42 @@
 ### 1. Why / Background
   * This is Berkeley Coding Boot Camp (BCBC) week 6 homework assignment.
     * The BCBC curriculum generally focuses on JavaScript along with HTML/CSS, using the MERN (MongoDB, Express, React, Node) software stack, to teach web development skills across the client and server. 
-  * The Bamazon is a command-line node application that takes in orders from customers and depletes stock from the store's inventory.
+  * The Bamazon is a command-line node application:
+    * Takes in orders from customers and depletes stock from the store's inventory
+    * Provides manager and supervisor view 
     * (Bonus) This app also tracks product sales across store's departments and then provides a summary of the highest-grossing departments in the store
  ### 2. What / Objectives / User Stories
   * This project development, from design through deployment of the application, used Node.js and MySQL as the primary web development technology on the server side along with npm:
     * The following npm packages were used:
       * inquirer: collection of common interactive command-line user interfaces
       * mysql: node.js driver for mysql
+      * console.table: prints an array of objects as a table in console
   * User Stories, by categorization:
-    * 
-      * 
-    * 
-      * 
-    * Index.js contains logic for game
+    * Bamazon DB Schema defining products table
+    * Main Controller to establish connection to database
+    * Customer viewing and ordering products
+    * Manager viewing products, low inventory and adding products, inventory
+    * Supervisor viewing product sales and creating departments
  ### 3. How / Design Description
   * The scope of the project fit well into [Agile methodology with Scrum and Kanban frameworks](https://en.wikipedia.org/wiki/Agile_software_development). Due to limited scope and non-group assignment, GitHub's built-in tools were not used to support project execution:
     * [Projects](https://github.com/jkawahara/bamazon-cl/projects) Kanban board for documenting user stories and overall progress
     * [Issues](https://github.com/jkawahara/bamazon-cl/issues) Issue tracking for user stories, features and bug report
   * Functionality - refer to TBD of application user flow:
     * Design Description
-      * 
+      * Bamazon DB Schema defines products table with the following fields:
+        * item_id (primary key), product_name, department_name, price, stock_quantity
+      * Main Controller
+        * Establish connection to MySQL bamazon database
+        * 
+      * Customer View displays item_id, product_name and price
+        * Prompt customer for item_id and number of units to order
+          * If insufficient inventory, log and end order
+          * If sufficient inventory, update inventory and log cost
+        * Relevant modules: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2()
+      * Manager View
+        * 
+      * Supervisor View
+        * 
    * Prerequisites for Development:
     * MacBook Air (Intel Core i7, 2.2 GHz, 1 Processor, 2 Cores, 8GB)
     * 64 bit operating system 
