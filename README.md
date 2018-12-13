@@ -34,7 +34,7 @@
         * Prompt customer for item_id and number of units to order
           * If insufficient inventory, log and end order
           * If sufficient inventory, update inventory and log cost
-        * Relevant modules: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2()
+        * Relevant modules: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), reduceInventory(), 
       * Manager View
         * 
       * Supervisor View
