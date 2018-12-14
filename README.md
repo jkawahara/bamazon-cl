@@ -23,7 +23,7 @@
   * The scope of the project fit well into [Agile methodology with Scrum and Kanban frameworks](https://en.wikipedia.org/wiki/Agile_software_development). Due to limited scope and non-group assignment, GitHub's built-in tools were not used to support project execution:
     * [Projects](https://github.com/jkawahara/bamazon-cl/projects) Kanban board for documenting user stories and overall progress
     * [Issues](https://github.com/jkawahara/bamazon-cl/issues) Issue tracking for user stories, features and bug report
-  * Functionality - refer to TBD of application user flow:
+  * Functionality - refer to [video of application user flow](https://drive.google.com/open?id=1YlMjCQ4RwPSYQIhm3CAlS3O_GO9Vaxxz):
     * Design Description
       * Bamazon DB Schema defines the following tables with fields:
         * products table
@@ -66,6 +66,7 @@
     * [npm](https://www.npmjs.com/)
       * [inquirer](https://www.npmjs.com/package/inquirer)
       * [prompt](https://www.npmjs.com/package/prompt)
+      * [console.table](https://www.npmjs.com/package/console.table)
    * Installing:
     * For further development or use of this application, clone or download application files from GitHub, which is organized into the following directory structure:
       * /bamazon-cl (application root directory level)
