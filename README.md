@@ -37,8 +37,8 @@
       * Customer View displays item_id, product_name and price
         * Prompt customer for item_id and number of units to order
           * If insufficient inventory, log and end order
-          * If sufficient inventory, update inventory and log cost
-        * Relevant functions: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), checkInventory(), reduceInventory()
+          * If sufficient inventory, update stock_quantity, log cost, update product_sales
+        * Relevant functions: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), checkInventory(), reduceInventory(), updateSales()
         * Relevant modules: bamazonCustomer.js
       * Manager View
         * Display menu of options for manager:

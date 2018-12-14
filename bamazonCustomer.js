@@ -93,6 +93,9 @@ function checkInventory(itemID, units) {
         `\nYour order for (${units}) ${results[0].product_name}s comes out to $${orderCost}.` +
         '\nThank you.\n'
         );
+
+      // Call to update product_sales
+      updateSales(itemID, orderCost);
       viewCustomer();
     }
   })
@@ -104,6 +107,12 @@ function reduceInventory(itemID, units, price, stock_quantity) {
     if (err) throw err;
   })
   return price * units;
+}
+
+function updateSales(itemID, productSales) {
+  connection.query(`UPDATE products SET product_sales=product_sales+${productSales} WHERE item_id='${itemID}'`, function(err) {
+    if (err) throw err;
+  })
 }
 
 // *** CONTROLLER
