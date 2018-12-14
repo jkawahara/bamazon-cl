@@ -28,6 +28,10 @@ CREATE TABLE departments (
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ('Laptop', 'Computers', 1000, 500), ('Adjustable Desk', 'Furniture', 400, 200), ('Monitor', 'Accessories', 250, 500), ('Tablet', 'Mobile Device', 700, 1000), ('Phone', 'Mobile Device', 800, 2000), ('Router', 'Communications', 200, 500), ('Hotspot', 'Communications', 250, 400), ('Adjustable Chair', 'Furniture', 300, 200), ('Desktop', 'Computers', 500, 500), ('Dock', 'Accessories', 150, 250);
 
+-- Seed database with departments based on products seeding
+INSERT INTO departments (department_name, over_head_costs)
+VALUES ('Computers', 50000), ('Furniture', 80000), ('Accessories', 15000), ('Mobile Device', 100000), ('Communications', 10000);
+
 -- Select table
 SELECT * FROM products;
 SELECT * FROM departments;
