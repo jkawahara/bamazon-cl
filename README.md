@@ -45,12 +45,14 @@
           * View Products for Sale: Display item_id, product_name, price, stock_quantity for all item_ids
           * View Low Inventory: Display item_id, product_name, price, stock_quantity for stock_quantity less than 5
           * Add to Inventory: Add stock_quantity for any existing item_id
-          * Add New Product: Add new item_id current item_id
+          * Add New Product: Add new item_id
         * Relevant functions: viewManager(), displayProducts(), displayLowInventory(), addInventory(), addNewProduct()
         * Relevant modules: bamazonManager.js
       * Supervisor View
-        * 
-        * Relevant functions: 
+        * Display menu of options for supervisor:
+          * View Product Sales by Department: Display department_id, department_name, over_head_costs, product_sales, total_profit
+          * Create New Department: Create new department_id
+        * Relevant functions: viewSupervisor(), displayProductsByDept(), createNewDept()
         * Relevant modules: bamazonSupervisor.js
    * Prerequisites for Development:
     * MacBook Air (Intel Core i7, 2.2 GHz, 1 Processor, 2 Cores, 8GB)

@@ -20,7 +20,7 @@ CREATE TABLE products (
 CREATE TABLE departments (
   department_id INT(5) AUTO_INCREMENT NOT NULL,
   department_name VARCHAR(100) NOT NULL,
-  over_head_costs DECIMAL(8,2) NOT NULL,
+  over_head_costs DECIMAL(8,2) DEFAULT '0.00' NOT NULL,
   PRIMARY KEY (department_id)
 );
 
