@@ -130,7 +130,63 @@ function addInventory() {
 
 // Add new item_id current item_id
 function addNewProduct() {
-
+  console.log(
+    '\nWelcome to Bamazon Manager View' +
+    '\n-Add New Product-' + '\n'
+    );
+  
+  // Prompt to manager for product_name, department_name, price, stock_quantity
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'productName',
+      message: 'What is the product_name you would like to add?'
+    },
+    {
+      type: 'input',
+      name: 'departmentName',
+      message: 'What is the department_name?'
+    },
+    {
+      type: 'input',
+      name: 'price',
+      message: 'What is the price?',
+      validate: function(value) {
+        if (isNaN(value) === false) {
+          return true;
+        }
+        console.log('\n\nYou didn\'t enter a number. Try again.\n');
+        return false;
+      }
+    },
+    {
+      type: 'input',
+      name: 'stockQuantity',
+      message: 'How much stock_quantity?',
+      validate: function(value) {
+        if (isNaN(value) === false) {
+          return true;
+        }
+        console.log('\n\nYou didn\'t enter a number. Try again.\n');
+        return false;
+      }
+    }
+  ])
+  .then(answer => {
+    connection.query(
+      'INSERT INTO products SET ?',
+      {
+        product_name: answer.productName,
+        department_name: answer.departmentName,
+        price: answer.price,
+        stock_quantity: answer.stockQuantity
+      },
+      function(err, results) {
+      if (err) throw err;
+    })
+    console.log(`\n(${answer.productName}) added as new product`);
+    viewManager();
+  });
 }
 
 // *** CONTROLLER
