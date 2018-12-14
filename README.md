@@ -5,8 +5,8 @@
     * The BCBC curriculum generally focuses on JavaScript along with HTML/CSS, using the MERN (MongoDB, Express, React, Node) software stack, to teach web development skills across the client and server. 
   * The Bamazon is a command-line node application:
     * Takes in orders from customers and depletes stock from the store's inventory
-    * Provides manager and supervisor view 
-    * (Bonus) This app also tracks product sales across store's departments and then provides a summary of the highest-grossing departments in the store
+    * Provides manager and supervisor views
+    * TBD (Bonus) This app also tracks product sales across store's departments and then provides a summary of the highest-grossing departments in the store
  ### 2. What / Objectives / User Stories
   * This project development, from design through deployment of the application, used Node.js and MySQL as the primary web development technology on the server side along with npm:
     * The following npm packages were used:
@@ -14,7 +14,7 @@
       * mysql: node.js driver for mysql
       * console.table: prints an array of objects as a table in console
   * User Stories, by categorization:
-    * Bamazon DB Schema defining products table
+    * Bamazon DB Schema defining products and departments tables
     * Main Controller to establish connection to database
     * Customer viewing and ordering products
     * Manager viewing products, low inventory and adding products, inventory
@@ -25,8 +25,11 @@
     * [Issues](https://github.com/jkawahara/bamazon-cl/issues) Issue tracking for user stories, features and bug report
   * Functionality - refer to TBD of application user flow:
     * Design Description
-      * Bamazon DB Schema defines products table with the following fields:
-        * item_id (primary key), product_name, department_name, price, stock_quantity
+      * Bamazon DB Schema defines the following tables with fields:
+        * products table
+          * item_id (primary key), product_name, department_name, price, stock_quantity, product_sales
+        * departments table
+          * department_id (primary key), department_name, over_head_costs
       * General design of views
         * Require modules and packages: mysql, inquirer, console.table
         * Establish connection to MySQL bamazon database
