@@ -5,8 +5,8 @@
     * The BCBC curriculum generally focuses on JavaScript along with HTML/CSS, using the MERN (MongoDB, Express, React, Node) software stack, to teach web development skills across the client and server. 
   * The Bamazon is a command-line node application:
     * Takes in orders from customers and depletes stock from the store's inventory
-    * Provides manager and supervisor views
-    * TBD (Bonus) This app also tracks product sales across store's departments and then provides a summary of the highest-grossing departments in the store
+    * Provides manager and supervisor views for maintaining inventory
+    * (Bonus) This app also tracks product sales across store's departments and then provides a summary of the highest-grossing departments in the store
  ### 2. What / Objectives / User Stories
   * This project development, from design through deployment of the application, used Node.js and MySQL as the primary web development technology on the server side along with npm:
     * The following npm packages were used:
@@ -34,24 +34,25 @@
         * Require modules and packages: mysql, inquirer, console.table
         * Establish connection to MySQL bamazon database
         * Relevant functions: mysql.createConnection(), connection.connect()
-      * Customer View displays item_id, product_name and price
+      * Customer View 
+      * View Products Listing: Display item_id, product_name, price by performing read operation using SELECT SQL query of products table
         * Prompt customer for item_id and number of units to order
           * If insufficient inventory, log and end order
-          * If sufficient inventory, update stock_quantity, log cost, update product_sales
+          * If sufficient inventory, reduce stock_quantity, log cost, update product_sales by performing update operation using UPDATE SQL query of products table
         * Relevant functions: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), checkInventory(), reduceInventory(), updateSales()
         * Relevant modules: bamazonCustomer.js
       * Manager View
         * Display menu of options for manager:
-          * View Products for Sale: Display item_id, product_name, price, stock_quantity for all item_ids
-          * View Low Inventory: Display item_id, product_name, price, stock_quantity for stock_quantity less than 5
-          * Add to Inventory: Add stock_quantity for any existing item_id
-          * Add New Product: Add new item_id
+          * View Products for Sale: Display item_id, product_name, price, stock_quantity for all item_ids by performing read operation using SELECT SQL query of products table
+          * View Low Inventory: Display item_id, product_name, price, stock_quantity for stock_quantity less than 5 by performing read operation using SELECT SQL query of products table
+          * Add to Inventory: Add stock_quantity for any existing item_id by performing update operation using UPDATE SQL query of products table
+          * Add New Product: Add new item_id by performing create operation using INSERT SQL query of products table
         * Relevant functions: viewManager(), displayProducts(), displayLowInventory(), addInventory(), addNewProduct()
         * Relevant modules: bamazonManager.js
       * Supervisor View
         * Display menu of options for supervisor:
-          * View Product Sales by Department: Display department_id, department_name, over_head_costs, product_sales, total_profit
-          * Create New Department: Create new department_id
+          * View Product Sales by Department: Display department_id, department_name, over_head_costs, product_sales, total_profit by performing read operation using SELECT SQL query of departments and products tables, including SUM, AS, JOIN, GROUP BY syntax
+          * Create New Department: Create new department_id by performing create operation using INSERT SQL query of departments table
         * Relevant functions: viewSupervisor(), displayProductsByDept(), createNewDept()
         * Relevant modules: bamazonSupervisor.js
    * Prerequisites for Development:
@@ -80,8 +81,12 @@
         * package-lock.json - generated each time npm install executes
         * package.json - includes dependencies: inquirer
         * README.md
-    * Once the application files are ready per the above structure, go to the application root directory level and enter the following in the termminal to install required node packages. This executes by referring to the included dependencies in package.json and creates required node packages in /node_modules and package-lock.json:
-      * npm install
+    * Once the application files are ready per the above structure, go to the application root directory level
+      * Enter the following in terminal to execute SQL script file bamazon_schema.sql to create/use database and create/seed/SELECT tables
+        * mysql -u 'root' -p
+        * source bamazon_schema.sql
+      * Enter the following in termminal to install required node packages. This executes by referring to the included dependencies in package.json and creates required node packages in /node_modules and package-lock.json:
+        * npm install
    * Running the tests:
     * Unit testing & integration testing was informally executed
    * Deployment:
