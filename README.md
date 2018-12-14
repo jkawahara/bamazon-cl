@@ -27,18 +27,24 @@
     * Design Description
       * Bamazon DB Schema defines products table with the following fields:
         * item_id (primary key), product_name, department_name, price, stock_quantity
-      * Main Controller
+      * General design of views
+        * Require modules and packages: mysql, inquirer, console.table
         * Establish connection to MySQL bamazon database
-        * 
+        * Relevant functions: mysql.createConnection(), connection.connect()
       * Customer View displays item_id, product_name and price
         * Prompt customer for item_id and number of units to order
           * If insufficient inventory, log and end order
           * If sufficient inventory, update inventory and log cost
-        * Relevant modules: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), reduceInventory(), 
+        * Relevant functions: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), checkInventory(), reduceInventory()
+        * Relevant modules: bamazonCustomer.js
       * Manager View
         * 
+        * Relevant functions: 
+        * Relevant modules: bamazonManager.js
       * Supervisor View
         * 
+        * Relevant functions: 
+        * Relevant modules: bamazonSupervisor.js
    * Prerequisites for Development:
     * MacBook Air (Intel Core i7, 2.2 GHz, 1 Processor, 2 Cores, 8GB)
     * 64 bit operating system 

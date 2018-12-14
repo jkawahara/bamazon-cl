@@ -26,22 +26,22 @@ function viewCustomer() {
     console.table(results);
     
     // Call to prompt customer message 1 for item_id to order
-    promptCustomerMsg1();
+    promptCustomerMsg1(results.length);
   }); 
 }
 
-// First, prompt customer for item_id to order
-function promptCustomerMsg1() {
+// First prompt to customer for item_id to order
+function promptCustomerMsg1(numItems) {
   inquirer.prompt([
     {
       type: 'input',
       name: 'itemID',
       message: 'Which product would you like to buy? Enter item_id of product: ',
       validate: function(value) {
-        if (isNaN(value) === false) {
+        if (isNaN(value) === false && (parseInt(value) >= 1 && parseInt(value) <= numItems)) {
           return true;
         }
-        console.log('\nYou didn\'t enter a number. Try again');
+        console.log('\n\nYou entered an item_id that is not listed. Try again.\n');
         return false;
       }
     }
@@ -52,7 +52,7 @@ function promptCustomerMsg1() {
   });
 }
 
-// Second, prompt customer for number of units to order
+// Second prompt to customer for number of units to order
 function promptCustomerMsg2(itemID) {
   inquirer.prompt([
     {
@@ -63,7 +63,7 @@ function promptCustomerMsg2(itemID) {
         if (isNaN(value) === false) {
           return true;
         }
-        console.log('\nYou didn\'t enter a number. Try again');
+        console.log('\n\nYou didn\'t enter a number. Try again.\n');
         
         return false;
       }
@@ -81,8 +81,11 @@ function checkInventory(itemID, units) {
     
     // If sufficient inventory level then complete order
     if (results[0].stock_quantity < units) {
-      console.log(`Insufficient quanitity! There are only (${results[0].stock_quantity}) ${results[0].product_name}s remaining. Please enter a smaller number of units.`);
-      promptCustomerMsg1();
+      console.log(
+        `\nInsufficient quanitity! There are only (${results[0].stock_quantity}) ${results[0].product_name}s remaining.\n` +
+        'Please enter a smaller number of units.\n'
+        );
+      promptCustomerMsg2(itemID);
     } else {
       // Call to reduce stock_quantity and calculate orderCost
       var orderCost = reduceInventory(itemID, units, results[0].price, results[0].stock_quantity);
@@ -90,8 +93,8 @@ function checkInventory(itemID, units) {
         `\nYour order for (${units}) ${results[0].product_name}s comes out to $${orderCost}.` +
         '\nThank you.\n'
         );
+      viewCustomer();
     }
-    promptCustomerMsg1();
   })
 }
 
@@ -103,7 +106,7 @@ function reduceInventory(itemID, units, price, stock_quantity) {
   return price * units;
 }
 
-// *** MAIN CONTROLLER
+// *** CONTROLLER
 
 // Connect to MySQL bamazon DB
 connection.connect(function(err) {
