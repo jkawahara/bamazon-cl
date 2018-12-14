@@ -128,7 +128,7 @@ function addInventory() {
   });
 }
 
-// Add new item_id current item_id
+// Add new item_id
 function addNewProduct() {
   console.log(
     '\nWelcome to Bamazon Manager View' +
