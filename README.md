@@ -38,8 +38,12 @@
         * Relevant functions: viewCustomer(), promptCustomerMsg1(), promptCustomerMsg2(), checkInventory(), reduceInventory()
         * Relevant modules: bamazonCustomer.js
       * Manager View
-        * 
-        * Relevant functions: 
+        * Display menu of options for manager:
+          * View Products for Sale: Display item_id, product_name, price, stock_quantity for all item_ids
+          * View Low Inventory: Display item_id, product_name, price, stock_quantity for stock_quantity less than 5
+          * Add to Inventory: Add stock_quantity for any existing item_id
+          * Add New Product: Add new item_id current item_id
+        * Relevant functions: viewManager(), displayProducts(), displayLowInventory(), addInventory(), addNewProduct()
         * Relevant modules: bamazonManager.js
       * Supervisor View
         * 
