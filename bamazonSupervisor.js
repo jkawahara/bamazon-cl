@@ -37,7 +37,22 @@ function viewSupervisor() {
 
 // Display department_id, department_name, over_head_costs, product_sales, total_profit
 function displayProductsByDept() {
+  // Query department_id, department_name, over_head_costs, product_sales
+  // GROUP BY department_id requires SUM of over_head_costs, product_sales, product_sales - over_head_costs
+  // Create alias for temporary column total_profit = over_head_costs - product_sales
+  connection.query('SELECT department_id, departments.department_name, SUM(over_head_costs), SUM(product_sales), SUM(product_sales-over_head_costs) AS total_profit FROM departments LEFT JOIN products ON departments.department_name=products.department_name GROUP BY department_id', function(err, results) {
+    if (err) throw err;
+    console.log(
+      '\nWelcome to Bamazon Supervisor View' +
+      '\n-Product Sales by Department-' + '\n'
+      );
 
+    // Log query results in table
+    console.table(results);
+    
+    // Call to display supervisor view
+    viewSupervisor();
+  });
 }
 
 // Create new department_id
@@ -92,7 +107,7 @@ function createNewDept() {
 // Connect to MySQL bamazon DB
 connection.connect(function(err) {
   if (err) throw err; 
-  
+
   // Call to display supervisor view
   viewSupervisor();
 
