@@ -40,7 +40,7 @@ function displayProductsByDept() {
   // Query department_id, department_name, over_head_costs, product_sales
   // GROUP BY department_id requires SUM of over_head_costs, product_sales, product_sales - over_head_costs
   // Create alias for temporary column total_profit = over_head_costs - product_sales
-  connection.query('SELECT department_id, departments.department_name, SUM(over_head_costs), SUM(product_sales), SUM(product_sales-over_head_costs) AS total_profit FROM departments LEFT JOIN products ON departments.department_name=products.department_name GROUP BY department_id', function(err, results) {
+  connection.query('SELECT department_id, departments.department_name, over_head_costs, SUM(product_sales), SUM(product_sales-over_head_costs) AS total_profit FROM departments LEFT JOIN products ON departments.department_name=products.department_name GROUP BY department_id', function(err, results) {
     if (err) throw err;
     console.log(
       '\nWelcome to Bamazon Supervisor View' +
